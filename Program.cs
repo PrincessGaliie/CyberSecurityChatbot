@@ -10,18 +10,19 @@ namespace CyberAwareChatbot
     {
         static void Main(string[] args)
         {
-            // ASCII Art Logo 
-            PrintWithColor("=============================", ConsoleColor.Cyan);
-            PrintWithColor("   _____  __  __ ____  _____ ", ConsoleColor.Cyan);
-            PrintWithColor("  / ____||  \\/  |  _ \\|  __ \\", ConsoleColor.Cyan);
-            PrintWithColor(" | |     | \\  / | |_) | |  | |", ConsoleColor.Cyan);
-            PrintWithColor(" | |     | |\\/| |  _ <| |  | |", ConsoleColor.Cyan);
-            PrintWithColor(" | |____ | |  | | |_) | |__| |", ConsoleColor.Cyan);
-            PrintWithColor("  \\_____|_|  |_|____/|_____/ ", ConsoleColor.Cyan);
-            PrintWithColor("=============================", ConsoleColor.Cyan);
+            // ASCII Art Logo
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(@"                   ____      _          _                 ");
+            Console.WriteLine(@"                  / ___|   _| |__   ___| |_ __ _ ___ _ __ ");
+            Console.WriteLine(@"                 | |  | | | | '_ \ / _ \ __/ _` / _ \ '__|");
+            Console.WriteLine(@"                 | |__| |_| | |_) |  __/ || (_| |  __/ |   ");
+            Console.WriteLine(@"                  \____\__, |_.__/ \___|\__\__, |\___|_|   ");
+            Console.WriteLine(@"                       |___/               |___/           ");
+            Console.WriteLine("Cybersecurity Awareness Bot");
+            Console.ResetColor();
+
             PrintWithColor("Welcome to CYBER AWARE CHATBOT!", ConsoleColor.Green);
 
-            // Play name prompt sound synchronously
             try
             {
                 using (SoundPlayer player = new SoundPlayer("Name.wav"))
@@ -29,16 +30,15 @@ namespace CyberAwareChatbot
                     player.PlaySync();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                PrintWithColor("[Warning] Could not play the name prompt sound: " + ex.Message, ConsoleColor.Yellow);
+                PrintWithColor("(Sound effect unavailable.)", ConsoleColor.Yellow);
             }
 
-            // Prompt for user's name
             string userName;
             do
-            {   
-                PrintWithColor($"HI MY NAME IS CHATTY !", ConsoleColor.Green);
+            {
+                PrintWithColor("HI MY NAME IS CHATTY!", ConsoleColor.Green);
                 PrintWithColor("Please enter your name: ", ConsoleColor.White);
                 userName = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(userName))
@@ -47,7 +47,6 @@ namespace CyberAwareChatbot
                 }
             } while (string.IsNullOrWhiteSpace(userName));
 
-            // Play greeting sound synchronously
             try
             {
                 using (SoundPlayer player = new SoundPlayer("greeting.wav"))
@@ -55,17 +54,16 @@ namespace CyberAwareChatbot
                     player.PlaySync();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                PrintWithColor("[Warning] Could not play the greeting sound: " + ex.Message, ConsoleColor.Yellow);
+                PrintWithColor("(Sound effect unavailable.)", ConsoleColor.Yellow);
             }
 
-            // Personalized text greeting
             PrintWithColor($"Hello, {userName}! Stay vigilant and keep your data safe.", ConsoleColor.Green);
             PrintWithColor("Type your question about cybersecurity or type 'exit' to quit.", ConsoleColor.White);
 
-            // Load responses from dataset file
-            Dictionary<string, string> responses = LoadResponses("Dataset.txt");
+            Dictionary<string, List<string>> responses = new ChatBot().responses;
+            Random rnd = new Random();
 
             while (true)
             {
@@ -84,49 +82,25 @@ namespace CyberAwareChatbot
                     break;
                 }
 
-                string response = GetResponse(userInput, responses);
-                PrintWithTypingEffect("Bot: " + response, ConsoleColor.Cyan);
-            }
-        }
-
-        static Dictionary<string, string> LoadResponses(string filePath)
-        {
-            Dictionary<string, string> responses = new Dictionary<string, string>();
-
-            try
-            {
-                foreach (string line in File.ReadAllLines(filePath))
+                string response = "I can't provide details on that. Try asking about passwords, phishing, or two-factor authentication.";
+                foreach (var pair in responses)
                 {
-                    if (line.Contains("|"))
+                    if (userInput.Contains(pair.Key))
                     {
-                        string[] parts = line.Split('|');
-                        if (parts.Length == 2)
-                        {
-                            responses.Add(parts[0].Trim().ToLower(), parts[1].Trim());
-                        }
+                        response = pair.Value[rnd.Next(pair.Value.Count)];
+                        break;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                PrintWithColor("[Error] Unable to load responses: " + ex.Message, ConsoleColor.Red);
-            }
 
-            return responses;
-        }
-
-        static string GetResponse(string input, Dictionary<string, string> responses)
-        {
-            foreach (var pair in responses)
-            {
-                if (input.Contains(pair.Key))
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                foreach (char c in "Bot: " + response)
                 {
-                    return pair.Value;
+                    Console.Write(c);
+                    Thread.Sleep(30);
                 }
+                Console.WriteLine();
+                Console.ResetColor();
             }
-
-            string availableQueries = string.Join(", ", responses.Keys);
-            return $"I can't provide details on that, but what I can help you with is: {availableQueries}";
         }
 
         static void PrintWithColor(string message, ConsoleColor color)
@@ -135,20 +109,6 @@ namespace CyberAwareChatbot
             Console.WriteLine(message);
             Console.ResetColor();
         }
-
-        static void PrintWithTypingEffect(string message, ConsoleColor color)
-        {
-            Console.ForegroundColor = color;
-            foreach (char c in message)
-            {
-                Console.Write(c);
-                Thread.Sleep(50); // Adjust the delay to simulate typing effect
-            }
-            Console.WriteLine();
-            Console.ResetColor();
-            
-        }
     }
 }
-
 
