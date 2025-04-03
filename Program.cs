@@ -146,6 +146,7 @@ namespace CyberAwareChatbot
             }
             Console.WriteLine();
             Console.ResetColor();
+            
         }
     }
 }
