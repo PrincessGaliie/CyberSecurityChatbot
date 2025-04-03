@@ -6,7 +6,7 @@ CyberAwareChatbot is a console-based chatbot designed to provide information and
 
 - **ASCII Art Logo**: Displays a visually appealing ASCII art logo at the start.
 - **Sound Prompts**: Plays sound prompts to enhance user interaction.
-- **Personalized Greetings**: Greets users by their name and provides personalized messages.
+- **Personalized Greetings**: Greets users by their name and provides personalized messages with voice greeting.
 - **Cybersecurity Information**: Answers questions about common cybersecurity topics such as phishing, malware, password safety, and social engineering.
 - **Typing Effect**: Simulates a typing effect to create a conversational feel.
 - **Colored Text**: Uses colored text to enhance the visual structure and readability of the console interface.
