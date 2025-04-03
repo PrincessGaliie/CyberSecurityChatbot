@@ -1,0 +1,24 @@
+how are you|I'm just a bot, but I'm here to help you stay cyber safe!
+what can you do|I can answer questions about cybersecurity, including password safety, phishing, secure browsing, and more.
+what can i ask|You can ask me about cybersecurity topics like phishing, malware, password safety, VPNs, and secure browsing.
+phishing|Phishing is an attempt to obtain sensitive information by disguising as a trustworthy entity. Always verify links before clicking!
+malware|Malware is software designed to harm or exploit systems. Keep your antivirus software updated!
+password safety|Use strong, unique passwords for each account and enable two-factor authentication.
+social engineering|Be cautious of unsolicited messages and verify the identity of those asking for sensitive information.
+firewall|A firewall monitors and controls incoming and outgoing network traffic to protect your system from unauthorized access.
+vpn|A VPN encrypts your internet connection, securing your data while browsing online.
+two-factor authentication|2FA adds an extra layer of security by requiring a second form of verification after entering your password.
+secure browsing|Always use HTTPS connections and avoid entering sensitive information on unsecured websites.
+data backup|Regularly back up your data to secure locations to protect against data loss or ransomware attacks.
+antivirus|Keep your antivirus software updated to protect against the latest threats.
+ransomware|Ransomware is a type of malware that encrypts your data and demands payment for decryption. Always back up your data and avoid clicking suspicious links.
+brute force attack|A brute force attack tries numerous combinations to crack a password. Use strong and complex passwords to prevent it.
+sql injection|SQL injection involves inserting malicious SQL code into a query to manipulate or exploit a database. Always validate user inputs.
+ddos attack|A Distributed Denial of Service (DDoS) attack overloads a server with traffic, causing it to crash. Use firewalls and intrusion detection systems for protection.
+zero-day exploit|A zero-day exploit targets a software vulnerability that is unknown to the vendor. Keep your software up to date to reduce risk.
+rootkit|A rootkit is a type of malware designed to gain administrator-level control of a computer. Run frequent security scans to detect them.
+trojan horse|A Trojan horse disguises itself as legitimate software to trick users into installing it. Be cautious when downloading programs from untrusted sources.
+spyware|Spyware secretly monitors user activity and collects sensitive data. Use anti-spyware tools to detect and remove it.
+adware|Adware displays unwanted ads and may track your browsing habits. Use ad blockers and anti-adware software.
+keylogger|A keylogger records keystrokes to steal sensitive information. Use antivirus software to detect and remove keyloggers.
+botnet|A botnet is a network of infected devices controlled by hackers to perform malicious activities. Keep devices secure and updated.
